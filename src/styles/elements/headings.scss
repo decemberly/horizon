@@ -1,0 +1,39 @@
+%heading {
+  font-weight: bold;
+  line-height: 1.25;
+  margin-top: 0;
+  margin-bottom: 0.1em;
+  overflow-wrap: break-word;
+
+  a {
+    text-decoration: none;
+
+    &:hover,
+    &:focus,
+    &:active {
+      text-decoration: none;
+    }
+  }
+}
+
+%heading-alpha,
+h1 {
+  @extend %heading;
+  font-size: 36px;
+
+  @include respond-to('large') {
+    font-size: 14px;
+  }
+}
+
+%heading-beta,
+h2 {
+  @extend %heading;
+  font-size: 30px;
+}
+
+%heading-gamma,
+h3 {
+  @extend %heading;
+  font-size: 26px;
+}

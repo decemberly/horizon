@@ -1,0 +1,198 @@
+/// The respond-from mixin is used when you want something to happen from a specific device width.
+/// @requires {variable} breakpoints
+/// @param {String} $media - Breakpoint
+/// @param {String} $orientation - Orientation [null]
+/// @throws No value found for `$media`. Please make sure it is defined in `$breakpoints` map.
+@mixin respond-from($media, $orientation: null) {
+  @if map-has-key($breakpoints, $media) {
+    @if $orientation == null {
+      @media (min-width: #{map-get($breakpoints, $media)}) {
+        @content;
+      }
+    } @else {
+      @media (orientation: $orientation) and (min-width: #{map-get($breakpoints, $media)}) {
+        @content;
+      }
+    }
+  } @else {
+    @error 'No value found for `#{$media}`. ' + 'Please make sure it is defined in `$breakpoints` map.';
+  }
+}
+
+/// The respond-to mixin only responds to specific sizes, the size that you sent in as an argument all the way until the next breakpoint.
+/// @requires {variable} breakpoints
+/// @param {String} $media - Breakpoint
+/// @param {String} $orientation - Orientation [null]
+/// @throws No value found for `$media`. Please make sure it is defined in `$breakpoints` map.
+@mixin respond-to($media, $orientation: null) {
+  @if map-has-key($breakpoints, $media) {
+    @for $i from 1 through length($breakpoints) {
+      $breakpoint: nth($breakpoints, $i);
+      $name: nth($breakpoint, 1);
+      $value: nth($breakpoint, 2);
+
+      @if $media == $name {
+        @if $i == 1 {
+          @if $orientation == null {
+            @media (max-width: #{$value}) {
+              @content;
+            }
+          } @else {
+            @media (orientation: $orientation) and (max-width: #{$value}) {
+              @content;
+            }
+          }
+        } @else if $i == length($breakpoints) {
+          @if $orientation == null {
+            @media (min-width: #{$value}) {
+              @content;
+            }
+          } @else {
+            @media (orientation: $orientation) and (min-width: #{$value}) {
+              @content;
+            }
+          }
+        } @else {
+          $next_breakpoint: nth($breakpoints, $i + 1);
+          $next_name: nth($next_breakpoint, 1);
+          $next_value: nth($next_breakpoint, 2);
+
+          @if $orientation == null {
+            @media (min-width: #{$value}) and (max-width: #{$next_value - 1px}) {
+              @content;
+            }
+          } @else {
+            @media (orientation: $orientation) and (min-width: #{$value}) and (max-width: #{$next_value - 1px}) {
+              @content;
+            }
+          }
+        }
+      }
+    }
+  } @else {
+    @error 'No value found for `#{$media}`. ' + 'Please make sure it is defined in `$breakpoints` map.';
+  }
+}
+
+/// The respond-until mixin is the same as respond-from, but inverse.
+/// @requires {variable} breakpoints
+/// @param {String} $media - Breakpoint
+/// @param {String} $orientation - Orientation [null]
+/// @throws No value found for `$media`. Please make sure it is defined in `$breakpoints` map.
+@mixin respond-until($media, $orientation: null) {
+  @if map-has-key($breakpoints, $media) {
+    @if $orientation == null {
+      @media (max-width: #{map-get($breakpoints, $media) - 1px}) {
+        @content;
+      }
+    } @else {
+      @media (orientation: $orientation) and (max-width: #{map-get($breakpoints, $media) - 1px}) {
+        @content;
+      }
+    }
+  } @else {
+    @error 'No value found for `#{$media}`. ' + 'Please make sure it is defined in `$breakpoints` map.';
+  }
+}
+
+/// The respond-between is usable when you want something to happen between specific device widths.
+/// @requires {variable} breakpoints
+/// @param {String} $from-media - Breakpoint
+/// @param {String} $to-media - Breakpoint
+/// @param {String} $orientation - Orientation [null]
+/// @throws No value found for `$media`. Please make sure it is defined in `$breakpoints` map.
+@mixin respond-between($from-media, $to-media, $orientation: null) {
+  @if map-has-key($breakpoints, $from-media) {
+    @if map-has-key($breakpoints, $to-media) {
+    } @else {
+      @error 'No value found for `#{$to-media}`. ' + 'Please make sure it is defined in `$breakpoints` map.';
+    }
+  } @else {
+    @error 'No value found for `#{$from-media}`. ' + 'Please make sure it is defined in `$breakpoints` map.';
+  }
+}
+
+/// Shorthand for grid calculation.
+/// @param {Number} $columns - The number of columns to span over.
+/// @param {Number} $grid-columns - The total number of columns the grid have.
+@mixin grid($columns, $grid-columns) {
+  width: (grid($grid-columns) * $columns) + (grid($grid-columns, 'gutter') * ($columns - 1));
+  margin-right: grid($grid-columns, 'gutter');
+}
+
+/* stylelint-disable max-nesting-depth */
+/// Shorthand for all grid sizes.
+/// @param {String} $breakpoint - At what breakpoint is this mixin used?
+/// @param {Number} $grid-columns - how many cols does this grid have?
+@mixin grid-breakpoint($breakpoint, $grid-columns) {
+  @include respond-from($breakpoint) {
+    @for $i from 1 through $grid-columns {
+      .o-#{$i}-of-#{$grid-columns}\@#{$breakpoint} {
+        @include grid($i, $grid-columns);
+
+        // If divided by 2, remove margin from 2nd child
+        @if $grid-columns/$i == 2 {
+          &:nth-child(2n) {
+            margin-right: 0;
+          }
+
+          &:nth-child(2n + 1) {
+            clear: left;
+          }
+        }
+
+        // If divided by 3, remove margin from 3rd child
+        @if $grid-columns/$i == 3 {
+          &:nth-child(3n) {
+            margin-right: 0;
+          }
+
+          &:nth-child(3n + 1) {
+            clear: left;
+          }
+        }
+
+        // If divided by 4, remove margin from 4rd child
+        @if $grid-columns/$i == 4 {
+          &:nth-child(4n) {
+            margin-right: 0;
+          }
+
+          &:nth-child(4n + 1) {
+            clear: left;
+          }
+        }
+
+        // If divided by 6, remove margin from 6rd child
+        @if $grid-columns/$i == 6 {
+          &:nth-child(6n) {
+            margin-right: 0;
+          }
+
+          &:nth-child(6n + 1) {
+            clear: left;
+          }
+        }
+
+        // If divided by 12, remove margin from 6rd child
+        @if $grid-columns/$i == 12 {
+          &:nth-child(12n) {
+            margin-right: 0;
+          }
+
+          &:nth-child(12n + 1) {
+            clear: left;
+          }
+        }
+
+        // If divided by itself equals 1, remove margin from last child on row
+        @if $grid-columns/$i == 1 {
+          &:nth-child(#{$i}n) {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+  }
+}
+/* stylelint-enable max-nesting-depth */

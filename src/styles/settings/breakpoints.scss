@@ -1,0 +1,13 @@
+/// Map of breakpoints for responsive design.
+/// @see {mixin} respond-from
+/// @type Map
+
+$breakpoints: (
+  'small': 360px,
+  'medium': 550px,
+  'large': 768px,
+  'xlarge': 1024px,
+  'xxlarge': 1200px,
+  'xxxlarge': 1440px,
+  'xxxxlarge': 1680px,
+);

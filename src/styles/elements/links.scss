@@ -1,0 +1,10 @@
+a {
+  text-decoration: none;
+  color: color('blue');
+
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: underline;
+  }
+}

@@ -1,0 +1,26 @@
+/*
+  This will hide the focus indicator if the element receives focus via the mouse,
+  but it will still show up on keyboard focus.
+*/
+.js-focus-visible :focus:not(.focus-visible) {
+  outline: none;
+}
+
+/*
+  Optionally: Define a strong focus indicator for keyboard focus.
+  If you choose to skip this step then the browser's default focus
+  indicator will be displayed instead.
+*/
+.js-focus-visible .focus-visible {
+  outline: 5px auto color('focus');
+  outline: 5px auto Highlight;
+  outline: 5px auto -webkit-focus-ring-color;
+}
+
+/*
+  Faux links to create a larger clickable area.
+  Should not affect keyboard focus or screen readers.
+*/
+[data-faux-href]:hover {
+  cursor: pointer;
+}

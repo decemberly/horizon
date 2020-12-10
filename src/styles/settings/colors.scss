@@ -1,0 +1,23 @@
+// Colors
+//
+// All colors used on the website.
+
+/// Map of colors.
+/// @see {function} color
+/// @type Map
+/* stylelint-disable function-parentheses-space-inside, function-comma-space-after, indentation */
+$colors: (
+  'black': (
+    primary: #231f20,
+  ),
+  'white': (
+    primary: #fff,
+  ),
+  'blue': (
+    primary: #00f,
+  ),
+  'focus': (
+    primary: #0ce8f7,
+  ),
+);
+/* stylelint-enable function-parentheses-space-inside, function-comma-space-after, indentation */

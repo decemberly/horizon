@@ -1,0 +1,59 @@
+/// Width
+$wrapper: 1680px;
+
+/// Map of wrapper margins.
+/// @type Map
+$wrapper-margins: (
+  'default': (
+    'default': 5%,
+    'medium': 6%,
+    'xlarge': auto,
+  ),
+);
+$wrapper-negative-margins: (
+  'default': (
+    'default': 5.5555556%,
+    'medium': 6.8181818%,
+    'xlarge': auto,
+  ),
+);
+
+/// Map of row spacers.
+/// @type Map
+$row-variants: (
+  'xsmall': (
+    'default': 10px,
+    'medium': 15px,
+    'large': 20px,
+  ),
+  'small': (
+    'default': 30px,
+    'large': 35px,
+    'xlarge': 40px,
+  ),
+  'default': (
+    'default': 40px,
+    'medium': 60px,
+    'large': 85px,
+  ),
+  'large': (
+    'default': 80px,
+    'medium': 90px,
+    'large': 140px,
+    'xlarge': 160px,
+  ),
+);
+
+/// Map of grid columns.
+/// @see {function} grid
+/// @type Map
+$grid: (
+  2: (
+    gutter: 3%,
+    column: 48.5%,
+  ),
+  12: (
+    gutter: 4%,
+    column: 4.666666667%,
+  ),
+);

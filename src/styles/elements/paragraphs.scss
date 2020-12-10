@@ -1,0 +1,14 @@
+%p,
+p {
+  font-size: 18px;
+  margin-top: 0;
+  margin-bottom: 2em;
+
+  @include respond-from('large') {
+    font-size: 20px;
+  }
+
+  @include respond-from('xxlarge') {
+    font-size: 18px;
+  }
+}

@@ -1,0 +1,72 @@
+// Row
+//
+// Rows are used to create a consistent system of margins between elements.
+// Them margin can be different across breakpoints.
+/* stylelint-disable max-nesting-depth */
+.o-row {
+  @include clearfix;
+  display: block;
+
+  @each $row-variant, $row-variant-values in $row-variants {
+    @if $row-variant == 'default' {
+      @each $row-breakpoint, $row-breakpoint-value in $row-variant-values {
+        @if $row-breakpoint == 'default' {
+          margin-bottom: #{$row-breakpoint-value};
+        } @else {
+          @include respond-from('#{$row-breakpoint}') {
+            margin-bottom: #{$row-breakpoint-value};
+          }
+        }
+      }
+    } @else {
+      &.-#{$row-variant} {
+        @each $row-breakpoint, $row-breakpoint-value in $row-variant-values {
+          @if $row-breakpoint == 'default' {
+            margin-bottom: #{$row-breakpoint-value};
+          } @else {
+            @include respond-from('#{$row-breakpoint}') {
+              margin-bottom: #{$row-breakpoint-value};
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Faux Row
+//
+// Faux rows are used like rows, but for places that need top padding instead.
+// Useful for first elements in wrappers. Often used together with `o-row`.
+// Always consider using a row before the element instead of a faux row.
+.o-faux-row {
+  @include clearfix;
+  display: block;
+
+  @each $row-variant, $row-variant-values in $row-variants {
+    @if $row-variant == 'default' {
+      @each $row-breakpoint, $row-breakpoint-value in $row-variant-values {
+        @if $row-breakpoint == 'default' {
+          padding-top: #{$row-breakpoint-value};
+        } @else {
+          @include respond-from('#{$row-breakpoint}') {
+            padding-top: #{$row-breakpoint-value};
+          }
+        }
+      }
+    } @else {
+      &.-#{$row-variant} {
+        @each $row-breakpoint, $row-breakpoint-value in $row-variant-values {
+          @if $row-breakpoint == 'default' {
+            padding-top: #{$row-breakpoint-value};
+          } @else {
+            @include respond-from('#{$row-breakpoint}') {
+              padding-top: #{$row-breakpoint-value};
+            }
+          }
+        }
+      }
+    }
+  }
+}
+/* stylelint-enable max-nesting-depth */

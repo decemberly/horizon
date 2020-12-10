@@ -1,0 +1,64 @@
+/// Returns a color.
+/// @param {String} $color-name - Name of the color
+/// @param {String} $tone - The tone variant of the color
+/// @example scss
+///   color: color('yellow', 'shade');
+@function color($color-name, $tone: primary) {
+  @if not map-has-nested-keys($colors, $color-name, $tone) {
+    @warn 'No color tone found for \(#{$color-name}, #{$tone}\) in $colors map. Property omitted.';
+    @return false;
+  }
+
+  @return map-get(map-get($colors, $color-name), $tone);
+}
+
+/// Get z-layers.
+/// @param {String} $layer - Name of the layer.
+/// @example scss
+///   z-index: z('dropdown');
+@function z($layer) {
+  @if not map-has-key($z-layers, $layer) {
+    @warn 'No layer found for `#{$layer}` in $z-layers map. Property omitted.';
+  }
+
+  @return map-get($z-layers, $layer);
+}
+
+/// Returns a grid gutter or column width.
+/// @param {Number} $grid-columns - Total amount of columns in grid.
+/// @param {String} $context - The number you want.
+/// @example scss
+///   color: color('yellow', 'shade');
+
+@function grid($grid-columns, $context: column, $map: $grid) {
+  @return map-get(map-get($map, $grid-columns), $context);
+}
+
+/// Test if map got all `$keys` nested with each others
+/// @author Hugo Giraudel
+/// @param {Map} $map - Map
+/// @param {Arglist} $keys - Keys to test
+/// @return {Bool}
+@function map-has-nested-keys($map, $keys...) {
+  @each $key in $keys {
+    @if not map-has-key($map, $key) {
+      @return false;
+    }
+    $map: map-get($map, $key);
+  }
+
+  @return true;
+}
+
+/// Map deep get
+/// @author Hugo Giraudel
+/// @access public
+/// @param {Map} $map - Map
+/// @param {Arglist} $keys - Key chain
+/// @return {*} - Desired value
+@function map-deep-get($map, $keys...) {
+  @each $key in $keys {
+    $map: map-get($map, $key);
+  }
+  @return $map;
+}

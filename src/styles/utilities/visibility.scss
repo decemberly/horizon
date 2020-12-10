@@ -1,0 +1,27 @@
+// Visibility
+//
+// Invisible element as defined by [Jonathan Snook](http://snook.ca/archives/html_and_css/hiding-content-for-accessibility)
+//
+/* stylelint-disable declaration-no-important */
+
+.u-visually-hidden {
+  @extend %visually-hidden;
+}
+
+.u-focusable {
+  @extend %visually-hidden;
+
+  &:active,
+  &:focus {
+    position: absolute;
+    overflow: auto;
+    clip: auto;
+    width: 100%;
+    height: auto;
+  }
+}
+
+.u-hidden {
+  display: none;
+}
+/* stylelint-enable declaration-no-important */
