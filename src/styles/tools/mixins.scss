@@ -69,7 +69,7 @@
 /// Shorthand for grid calculation.
 /// @param {Number} $columns - The number of columns to span over.
 /// @param {Number} $grid-columns - The total number of columns the grid have.
-@mixin grid($columns, $grid-columns) {
+@mixin grid-generator($columns, $grid-columns) {
   width: (grid($grid-columns) * $columns) + (grid($grid-columns, 'gutter') * ($columns - 1));
   margin-right: grid($grid-columns, 'gutter');
 }
@@ -82,7 +82,7 @@
   @include respond-from($breakpoint) {
     @for $i from 1 through $grid-columns {
       .o-#{$i}-of-#{$grid-columns}\@#{$breakpoint} {
-        @include grid($i, $grid-columns);
+        @include grid-generator($i, $grid-columns);
 
         // If divided by 2, remove margin from 2nd child
         @if $grid-columns/$i == 2 {
