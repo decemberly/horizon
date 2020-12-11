@@ -1,114 +1,68 @@
 /// The respond-from mixin is used when you want something to happen from a specific device width.
 /// @requires {variable} breakpoints
-/// @param {String} $media - Breakpoint
+/// @param {String} $breakpoint - Breakpoint
 /// @param {String} $orientation - Orientation [null]
-/// @throws No value found for `$media`. Please make sure it is defined in `$breakpoints` map.
-@mixin respond-from($media, $orientation: null) {
-  @if map-has-key($breakpoints, $media) {
+/// @throws No value found for `$breakpoint`. Please make sure it is defined in `$breakpoints` map.
+@mixin respond-from($breakpoint, $orientation: null) {
+  @if map-has-key($breakpoints, $breakpoint) {
     @if $orientation == null {
-      @media (min-width: #{map-get($breakpoints, $media)}) {
+      @media (min-width: #{map-get($breakpoints, $breakpoint)}) {
         @content;
       }
     } @else {
-      @media (orientation: $orientation) and (min-width: #{map-get($breakpoints, $media)}) {
+      @media (orientation: $orientation) and (min-width: #{map-get($breakpoints, $breakpoint)}) {
         @content;
       }
     }
   } @else {
-    @error 'No value found for `#{$media}`. ' + 'Please make sure it is defined in `$breakpoints` map.';
-  }
-}
-
-/// The respond-to mixin only responds to specific sizes, the size that you sent in as an argument all the way until the next breakpoint.
-/// @requires {variable} breakpoints
-/// @param {String} $media - Breakpoint
-/// @param {String} $orientation - Orientation [null]
-/// @throws No value found for `$media`. Please make sure it is defined in `$breakpoints` map.
-@mixin respond-to($media, $orientation: null) {
-  @if map-has-key($breakpoints, $media) {
-    @for $i from 1 through length($breakpoints) {
-      $breakpoint: nth($breakpoints, $i);
-      $name: nth($breakpoint, 1);
-      $value: nth($breakpoint, 2);
-
-      @if $media == $name {
-        @if $i == 1 {
-          @if $orientation == null {
-            @media (max-width: #{$value}) {
-              @content;
-            }
-          } @else {
-            @media (orientation: $orientation) and (max-width: #{$value}) {
-              @content;
-            }
-          }
-        } @else if $i == length($breakpoints) {
-          @if $orientation == null {
-            @media (min-width: #{$value}) {
-              @content;
-            }
-          } @else {
-            @media (orientation: $orientation) and (min-width: #{$value}) {
-              @content;
-            }
-          }
-        } @else {
-          $next_breakpoint: nth($breakpoints, $i + 1);
-          $next_name: nth($next_breakpoint, 1);
-          $next_value: nth($next_breakpoint, 2);
-
-          @if $orientation == null {
-            @media (min-width: #{$value}) and (max-width: #{$next_value - 1px}) {
-              @content;
-            }
-          } @else {
-            @media (orientation: $orientation) and (min-width: #{$value}) and (max-width: #{$next_value - 1px}) {
-              @content;
-            }
-          }
-        }
-      }
-    }
-  } @else {
-    @error 'No value found for `#{$media}`. ' + 'Please make sure it is defined in `$breakpoints` map.';
+    @error 'No value found for `#{$breakpoint}`. ' + 'Please make sure it is defined in `$breakpoints` map.';
   }
 }
 
 /// The respond-until mixin is the same as respond-from, but inverse.
 /// @requires {variable} breakpoints
-/// @param {String} $media - Breakpoint
+/// @param {String} $breakpoint - Breakpoint
 /// @param {String} $orientation - Orientation [null]
-/// @throws No value found for `$media`. Please make sure it is defined in `$breakpoints` map.
-@mixin respond-until($media, $orientation: null) {
-  @if map-has-key($breakpoints, $media) {
+/// @throws No value found for `$breakpoint`. Please make sure it is defined in `$breakpoints` map.
+@mixin respond-until($breakpoint, $orientation: null) {
+  @if map-has-key($breakpoints, $breakpoint) {
     @if $orientation == null {
-      @media (max-width: #{map-get($breakpoints, $media) - 1px}) {
+      @media (max-width: #{map-get($breakpoints, $breakpoint) - 1px}) {
         @content;
       }
     } @else {
-      @media (orientation: $orientation) and (max-width: #{map-get($breakpoints, $media) - 1px}) {
+      @media (orientation: $orientation) and (max-width: #{map-get($breakpoints, $breakpoint) - 1px}) {
         @content;
       }
     }
   } @else {
-    @error 'No value found for `#{$media}`. ' + 'Please make sure it is defined in `$breakpoints` map.';
+    @error 'No value found for `#{$breakpoint}`. ' + 'Please make sure it is defined in `$breakpoints` map.';
   }
 }
 
 /// The respond-between is usable when you want something to happen between specific device widths.
 /// @requires {variable} breakpoints
-/// @param {String} $from-media - Breakpoint
-/// @param {String} $to-media - Breakpoint
+/// @param {String} $from-breakpoint - Breakpoint
+/// @param {String} $to-breakpoint - Breakpoint
 /// @param {String} $orientation - Orientation [null]
-/// @throws No value found for `$media`. Please make sure it is defined in `$breakpoints` map.
-@mixin respond-between($from-media, $to-media, $orientation: null) {
-  @if map-has-key($breakpoints, $from-media) {
-    @if map-has-key($breakpoints, $to-media) {
+/// @throws No value found for `$breakpoint`. Please make sure it is defined in `$breakpoints` map.
+@mixin respond-between($from-breakpoint, $to-breakpoint, $orientation: null) {
+  @if map-has-key($breakpoints, $from-breakpoint) {
+    @if map-has-key($breakpoints, $to-breakpoint) {
+      @if $orientation == null {
+        @media (min-width: #{map-get($breakpoints, $from-breakpoint)}) and (max-width: #{map-get($breakpoints, $to-breakpoint) - 1px}) {
+          @content;
+        }
+      } @else {
+        @media (orientation: $orientation) and (min-width: #{map-get($breakpoints, $from-breakpoint)}) and (max-width: #{map-get($breakpoints, $to-breakpoint) - 1px}) {
+          @content;
+        }
+      }
     } @else {
-      @error 'No value found for `#{$to-media}`. ' + 'Please make sure it is defined in `$breakpoints` map.';
+      @error 'No value found for `#{$to-breakpoint}`. ' + 'Please make sure it is defined in `$breakpoints` map.';
     }
   } @else {
-    @error 'No value found for `#{$from-media}`. ' + 'Please make sure it is defined in `$breakpoints` map.';
+    @error 'No value found for `#{$from-breakpoint}`. ' + 'Please make sure it is defined in `$breakpoints` map.';
   }
 }
 
