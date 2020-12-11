@@ -1,1 +1,8 @@
 node_modules
+
+# Generated files
+dist
+
+# Styleguide
+styleguide/*.html
+styleguide/kss-assets
