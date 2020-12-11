@@ -28,6 +28,7 @@
     "node-sass": "^5.0.0",
     "normalize.scss": "^0.1.0",
     "postcss": "^8.2.1",
+    "postcss-critical-css": "^3.0.6",
     "postcss-import": "^13.0.0",
     "postcss-loader": "^4.1.0",
     "postcss-pxtorem": "^5.1.1",
@@ -49,6 +50,10 @@
   "postcss": {
     "plugins": {
       "postcss-import": {},
+      "postcss-critical-css": {
+        "outputPath": "dist/main",
+        "preserve": false
+      },
       "postcss-sort-media-queries": {},
       "postcss-pxtorem": {
         "propList": [

@@ -7,6 +7,7 @@
 
   - Autoprefixer - you don't need to vendor prefix css properties
   - Pxtorem - it's ok to write font-sizes, widths and so on in px, it will be recalculated to rem
+  - [Critical CSS](https://github.com/zgreen/postcss-critical-css) using custom atRules, and/or custom CSS properties
 
 ## Markup coding style
 

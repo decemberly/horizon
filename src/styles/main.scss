@@ -35,7 +35,9 @@
 // Here you can find very high-level, far reaching styles.
 // This layer is rarely modified and you' won't find any classes here.
 // Examples: resets, sanitize.
-@import '../../node_modules/normalize.scss/normalize.scss';
+@critical {
+  @import '../../node_modules/normalize.scss/normalize.scss';
+}
 
 // Elements
 //
@@ -44,7 +46,9 @@
 // What does a blockquote look like without classes?
 // This is the last layer you'll find bare, element-based selectors.
 // Examples: h1, blockquote, ul, image.
-@import 'elements/*.scss';
+@critical {
+  @import 'elements/*.scss';
+}
 
 // Objects
 //
