@@ -1,11 +1,16 @@
 // Colors
 //
-// All colors used on the website.
+// All colors used.
+//
+// Markup: color-kss-markup.twig
+//
+// Weight: -1
+//
+// Style guide: colors
 
 /// Map of colors.
 /// @see {function} color
 /// @type Map
-/* stylelint-disable function-parentheses-space-inside, function-comma-space-after, indentation */
 $colors: (
   'black': (
     primary: #231f20,
@@ -24,4 +29,3 @@ $colors: (
     secondary: #000,
   ),
 );
-/* stylelint-enable function-parentheses-space-inside, function-comma-space-after, indentation */

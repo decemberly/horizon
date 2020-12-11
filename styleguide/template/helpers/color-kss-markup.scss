@@ -1,0 +1,45 @@
+@import '../../../src/styles/settings/colors';
+
+// Build the markup needed for the color section of the KSS style guide.
+@function color-kss-markup() {
+  $markup: '';
+
+  @each $color-key, $color-variants in $colors {
+    //$base-color-value: map-get($color-variants, 'base');
+    $markup: $markup + '<div class="kss-colors">';
+
+    @each $variant-name, $variant-value in $color-variants {
+      $text-color: text-contrast($variant-value);
+
+      $markup: $markup +
+        '<div class="kss-color"><div class="kss-color__swatch" style="background: #{$variant-value}; color: #{$text-color}">' +
+        '<h3 class="kss-color__desc">#{$color-key}<br/>#{$variant-name}</h3>' +
+        '<code class="kss-color__code">#{$variant-value}</code></div></div>';
+    }
+
+    $markup: $markup + '</div>';
+  }
+
+  // Wrap
+  $markup: '<div class="kss__style">' + $markup + '</div>';
+  $markup: '<!-- This markup is auto-generated from Sass with color-kss-markup(). Do not modify. -->' + $markup;
+
+  @return $markup;
+}
+
+@function text-contrast($n) {
+  $color: black;
+  $color-brightness: round((red($n) * 299) + (green($n) * 587) + (blue($n) * 114) / 1000);
+  $light-color: round((red(#ffffff) * 299) + (green(#ffffff) * 587) + (blue(#ffffff) * 114) / 1000);
+
+  @if abs($color-brightness) < ($light-color/2) {
+    $color: white;
+  }
+
+  @return $color;
+}
+
+// scss-lint:disable Comment
+/*
+#{color-kss-markup()}
+*/

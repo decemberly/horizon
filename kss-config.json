@@ -1,0 +1,9 @@
+{
+  "title": "Style Guide",
+  "source": "./src/styles/",
+  "destination": "styleguide/",
+  "builder": "./styleguide/template",
+  "homepage": "./README.md",
+  "css": ["../dist/main/critical.css", "../dist/main/main.css", "../node_modules/highlight.js/styles/a11y-dark.css"],
+  "js": ["../dist/main/main.js", "../node_modules/highlight.js/lib/highlight.js"]
+}

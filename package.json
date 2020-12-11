@@ -5,6 +5,8 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack",
+    "build:styleguide": "npm run build:styleguide-colors; node-sass styleguide/template/kss-assets/kss.scss -o styleguide/template/kss-assets/; kss --config kss-config.json",
+    "build:styleguide-colors": "node-sass styleguide/template/helpers/color-kss-markup.scss -o src/styles/settings; node -e \"require('fs').rename('src/styles/settings/color-kss-markup.css', 'src/styles/settings/color-kss-markup.twig', function(err) {  })\"",
     "lint": "stylelint --fix \"src/styles/**/*.scss\"",
     "prettier": "prettier --write \"src/styles/**/*.scss\"",
     "lint-check": "stylelint \"src/styles/**/*.scss\"",
@@ -23,6 +25,7 @@
     "imagemin-svgo": "^8.0.0",
     "imagemin-webpack-plugin": "^2.4.2",
     "import-glob-loader": "^1.1.0",
+    "kss": "^3.0.1",
     "lint-staged": "^10.5.3",
     "mini-css-extract-plugin": "^1.3.2",
     "node-sass": "^5.0.0",

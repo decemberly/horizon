@@ -1,0 +1,336 @@
+// KSS styles start here
+$large: 768px;
+$black: #1e1e1e;
+
+html {
+  position: relative;
+  background-color: #fafafa;
+  color: $black;
+}
+
+.kss-sidebar {
+  padding: 0.6em 1em;
+  background: $black;
+  color: white;
+
+  @media (min-width: $large) {
+    position: fixed;
+    width: 20%;
+    height: 100%;
+    overflow: auto;
+    padding: 1.5em 0 0;
+    border-bottom: 0;
+  }
+}
+
+.kss-header {
+  &__link {
+    color: white;
+    text-align: center;
+  }
+
+  &__title {
+    font-size: 1.8em;
+    line-height: 1.1;
+  }
+
+  @media (min-width: $large) {
+    padding: 0 1.5em;
+    margin: 2em 0;
+
+    &__link {
+      text-align: left;
+    }
+  }
+}
+
+.kss-main {
+  width: 100%;
+  padding: 1em;
+  margin: 0 auto;
+  box-sizing: border-box;
+
+  @media (min-width: $large) {
+    width: 80%;
+    margin-left: 20%;
+    padding: 4em;
+  }
+}
+
+.kss-nav__menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+
+  @media (min-width: $large) {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    text-align: left;
+  }
+
+  &-child {
+    border-top: 2px solid rgba(255, 255, 255, 0.1);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: none;
+
+    @media (min-width: $large) {
+      display: block;
+    }
+
+    .kss-nav__menu-item {
+      .kss-nav__menu-link {
+        padding-left: 1.8em;
+        border-left: 6px solid rgba(255, 255, 255, 0.1);
+      }
+    }
+  }
+
+  &-item {
+    display: inline-block;
+
+    @media (min-width: $large) {
+      display: block;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+
+      &:last-child {
+        border: 0;
+      }
+    }
+  }
+}
+
+.kss-nav__menu-link {
+  display: inline-block;
+  padding: 0.2em 0.25em;
+  color: currentColor;
+
+  @media (min-width: $large) {
+    display: block;
+    padding: 0.6em 1em;
+  }
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.is-in-viewport {
+    background: rgba(255, 255, 255, 0.1);
+    text-decoration: none;
+
+    .kss-nav__name {
+      text-decoration: underline;
+    }
+
+    .kss-nav__ref {
+      text-decoration: none;
+      opacity: 0.8;
+    }
+  }
+}
+
+.kss-nav__ref {
+  font-weight: bold;
+  opacity: 0.2;
+  margin-right: 0.3em;
+  //display: none; /* Hide unless we need it */
+}
+
+.kss-section {
+  margin-bottom: 1.75em;
+
+  @media (min-width: $large) {
+    margin-bottom: 3.75em;
+  }
+}
+
+.kss-title--level-1 {
+  margin-bottom: 0.8em;
+}
+
+.kss-title--level-2 {
+  margin-bottom: 0.8em;
+}
+
+.kss-title__permalink {
+  color: $black;
+
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: none;
+
+    .kss-title__permalink-hash {
+      opacity: 0.6;
+    }
+  }
+}
+
+.kss-title__permalink-hash {
+  opacity: 0;
+  margin-left: 0.5em;
+  text-decoration: none;
+}
+
+.kss-title__ref {
+  font-size: 0.4em;
+  line-height: 1.6;
+  font-weight: bold;
+  display: block;
+  opacity: 0.6;
+  text-decoration: none;
+}
+
+.kss-overview,
+.kss-description {
+  font-size: 16px;
+  line-height: calc(2px + 2.3ex + 2px);
+  max-width: 38em;
+
+  @media (min-width: $large) {
+    font-size: 18px;
+  }
+
+  code {
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 0.2em;
+    font-size: 0.8em;
+  }
+
+  a {
+    color: #2b60b5;
+    text-decoration: underline;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-bottom: 0.4em;
+  }
+}
+
+.kss-modifier__wrapper,
+.kss-markup {
+  pre {
+    margin: 0;
+  }
+}
+
+.kss-markup {
+  font-size: 2em;
+}
+
+.kss-modifier__heading {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+}
+
+.kss-modifier {
+  border-bottom: 1px solid darken(white, 8%);
+  position: relative;
+  overflow: hidden;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+}
+
+.kss-modifier__name {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: white;
+  border-left: 1px solid darken(white, 8%);
+  border-bottom: 1px solid darken(white, 8%);
+  padding: 0.5em;
+}
+
+.kss-modifier__description {
+  font-size: 0.9em;
+  font-weight: bold;
+  margin: -0.8em 0 1em;
+}
+
+.kss-markup__button {
+  margin-top: 0.8em;
+  background-color: darken(white, 8%);
+  padding: 0.2em 0.5em;
+  border: 0;
+}
+
+.kss-source {
+  margin: 1em 0;
+  display: inline-block;
+  padding: 0.2em 0.6em;
+  font-size: 0.9em;
+}
+
+.kss-colors {
+  float: left;
+  box-shadow: 0 0 0.4em 0.2em rgba(0, 0, 0, 0.1);
+  margin: 0.4em;
+}
+
+.kss-color {
+  float: left;
+}
+
+.kss-color__swatch {
+  width: 12em;
+  height: 15em;
+  padding: 1.5em;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.kss-color__desc {
+  margin: 0;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.kss-color__code {
+  font-size: 0.9em;
+}
+
+.kss-wrapper {
+  background: #ddd;
+  min-height: 2em;
+  text-align: center;
+  padding: 0.2em 0;
+}
+
+.kss-row {
+  overflow: hidden;
+  background: #999;
+  min-height: 2em;
+  text-align: center;
+  padding: 0.2em 0;
+  color: #fff;
+}
+
+.kss-grid {
+  overflow: hidden;
+  background: #666;
+  min-height: 2em;
+  padding: 0.2em 0;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+
+[aria-hidden='true'][aria-labelledby*='a11y-toggle'],
+[data-a11y-toggle]:not([aria-controls]) {
+  display: none;
+}

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Style Guide</title>
+
+  <meta name="description" content="">
+  <meta name="generator" content="kss-node">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="kss-assets/kss.css">
+  <link rel="stylesheet" href="../dist/main/critical.css"/>
+<link rel="stylesheet" href="../dist/main/main.css"/>
+<link rel="stylesheet" href="../node_modules/highlight.js/styles/a11y-dark.css"/>
+
+</head>
+<body id="kss-node">
+
+<div class="kss-sidebar kss-style">
+  <header class="kss-header">
+    <a class="kss-header__link" href="index.html">
+      <h1 class="kss_header__title">Style Guide</h1>
+    </a>
+  </header>
+  <nav class="kss-nav">
+    <ul class="kss-nav__menu">
+      <li class="kss-nav__menu-item">
+        <a class="kss-nav__menu-link" href="index.html">
+          <span class="kss-nav__ref">0</span
+          ><span class="kss-nav__name">Introduction</span>
+        </a>
+      </li>
+          <li class="kss-nav__menu-item">
+        <a class="kss-nav__menu-link" href="section-colors.html">
+          <span class="kss-nav__ref">1</span><span class="kss-nav__name">Colors</span>
+        </a>
+              </li>
+          <li class="kss-nav__menu-item">
+        <a class="kss-nav__menu-link" href="section-grid.html">
+          <span class="kss-nav__ref">2</span><span class="kss-nav__name">Grid</span>
+        </a>
+              </li>
+          <li class="kss-nav__menu-item">
+        <a class="kss-nav__menu-link" href="section-wrappers.html">
+          <span class="kss-nav__ref">3</span><span class="kss-nav__name">Wrappers</span>
+        </a>
+              </li>
+        </ul>
+  </nav>
+</div>
+<article role="main" class="kss-main">
+
+  
+          <div id="kssref-grid" class="kss-section kss-section--depth-1">
+      <div class="kss-style">
+                <h1 class="kss-title--level-1">
+          <a class="kss-title__permalink" href="#kssref-grid">
+            <span class="kss-title__ref">
+              Section 2
+              <span class="kss-title__permalink-hash">
+                grid
+              </span>
+            </span>
+            Grid
+          </a>
+        </h1>
+
+                  <div class="kss-description">
+            <p>The grid is based on 12 columns for breakpoints <code>large</code> and up.
+Smaller breakpoints uses a 2 column layout.
+The <code>@</code>-sign is used to determine at what breakpoint this grid is used.
+An element with the classes <code>o-1-of-2@xsmall-large</code> and <code>o-8-of-12@large</code> will be
+1/2 of the available screen size at breakpoints small to large, and 8/12 of
+the available size at breakpoints large and up.</p>
+
+          </div>
+        
+              </div>
+
+              <div class="kss-modifier__wrapper">
+          <div class="kss-modifier__heading kss-style">
+            Example          </div>
+
+          <div class="kss-modifier">
+            
+            <div class="kss-modifier__example">
+              <div class="o-wrapper kss-wrapper">
+ <div class="o-row kss-row">
+   <div class="o-8-of-12@large u-left@large kss-grid">.o-8-of-12 .u-left</div>
+   <div class="o-4-of-12@large u-left@large u-last kss-grid">.o-4-of-12 .u-left .u-last</div>
+ </div>
+ <div class="o-row kss-row">
+   <div class="o-4-of-12@large u-left@large kss-grid">.o-4-of-12 .u-left</div>
+   <div class="o-4-of-12@large u-left@large kss-grid">.o-4-of-12 .u-left</div>
+   <div class="o-4-of-12@large u-left@large u-last kss-grid">.o-4-of-12 .u-left .u-last</div>
+ </div>
+ <div class="o-row kss-row">
+   <div class="o-6-of-12@large u-left@large kss-grid">.o-6-of-12 .u-left</div>
+   <div class="o-6-of-12@large u-left@large u-last kss-grid">.o-6-of-12 .u-left .u-last</div>
+ </div>
+ <div class="o-row kss-row">
+   <div class="o-1-of-2@large -center kss-grid">.o-1-of-2 .-center</div>
+ </div>
+</div>
+            </div>
+          </div>
+
+                  </div>
+                  <button type="button" data-a11y-toggle="kss-markup-grid" class="kss-markup__button">Code</button>
+          <div class="kss-markup kss-style" id="kss-markup-grid">
+            <pre><code class="html">&lt;div class=&quot;o-wrapper kss-wrapper&quot;&gt;
+ &lt;div class=&quot;o-row kss-row&quot;&gt;
+   &lt;div class=&quot;o-8-of-12@large u-left@large kss-grid&quot;&gt;.o-8-of-12 .u-left&lt;/div&gt;
+   &lt;div class=&quot;o-4-of-12@large u-left@large u-last kss-grid&quot;&gt;.o-4-of-12 .u-left .u-last&lt;/div&gt;
+ &lt;/div&gt;
+ &lt;div class=&quot;o-row kss-row&quot;&gt;
+   &lt;div class=&quot;o-4-of-12@large u-left@large kss-grid&quot;&gt;.o-4-of-12 .u-left&lt;/div&gt;
+   &lt;div class=&quot;o-4-of-12@large u-left@large kss-grid&quot;&gt;.o-4-of-12 .u-left&lt;/div&gt;
+   &lt;div class=&quot;o-4-of-12@large u-left@large u-last kss-grid&quot;&gt;.o-4-of-12 .u-left .u-last&lt;/div&gt;
+ &lt;/div&gt;
+ &lt;div class=&quot;o-row kss-row&quot;&gt;
+   &lt;div class=&quot;o-6-of-12@large u-left@large kss-grid&quot;&gt;.o-6-of-12 .u-left&lt;/div&gt;
+   &lt;div class=&quot;o-6-of-12@large u-left@large u-last kss-grid&quot;&gt;.o-6-of-12 .u-left .u-last&lt;/div&gt;
+ &lt;/div&gt;
+ &lt;div class=&quot;o-row kss-row&quot;&gt;
+   &lt;div class=&quot;o-1-of-2@large -center kss-grid&quot;&gt;.o-1-of-2 .-center&lt;/div&gt;
+ &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+              
+          </div>
+  </article>
+
+<!-- SCRIPTS -->
+<script src="kss-assets/kss.js"></script>
+<script src="kss-assets/scrollspy.js"></script>
+<script src="kss-assets/prettify.js"></script>
+<script src="kss-assets/a11y-toggle.min.js"></script>
+<script src="../dist/main/main.js"></script>
+<script src="../node_modules/highlight.js/lib/highlight.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+<script>
+  prettyPrint();
+  var spy = new ScrollSpy('#kss-node', {
+    nav: '.kss-nav__menu-child > li > a',
+    className: 'is-in-viewport'
+  });
+</script>
+
+<!-- Automatically built using <a href="https://github.com/kss-node/kss-node">kss-node</a>. -->
+</body>
+</html>

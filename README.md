@@ -19,7 +19,7 @@ Generally, we want:
 
 ## CSS coding style
 
-- Before continuing, you should have a general understanding for specificity, the [SCSS syntax](http://sass-lang.com/).
+- Before continuing, you should have a general understanding for specificity, the [SCSS syntax](http://sass-lang.com/), and [KSS documentation](https://github.com/kneath/kss).
 - We are inspired by, and mostly following [Sass Guidelines](http://sass-guidelin.es/) by [Hugo Kitty Giraudel](http://hugogiraudel.com/).
 - We are using [Stylelint](https://stylelint.io/) and [Prettier](https://prettier.io/) to lint and format our stylesheets.
 
