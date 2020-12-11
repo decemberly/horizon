@@ -44,7 +44,6 @@ module.exports = function (env, entry) {
             },
             {
               loader: require.resolve('postcss-loader'),
-              options: require('./postcss.config.js'),
             },
             {
               loader: require.resolve('sass-loader'),
