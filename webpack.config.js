@@ -75,11 +75,11 @@ module.exports = function (env, entry) {
       //   patterns: [
       //     // {
       //     //     from: 'src/images',
-      //     //     to: 'dist/images',
+      //     //     to: 'images',
       //     // },
       //     {
       //         from: 'src/fonts',
-      //         to: 'dist/fonts'
+      //         to: 'fonts'
       //     },
       //   ],
       // }),
