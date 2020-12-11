@@ -1,0 +1,13 @@
+/// Implementation of a reduced motion mode.
+/// @author Hugo Kitty Giraudel https://hugogiraudel.com/2018/03/19/implementing-a-reduced-motion-mode/
+/// @example scss
+///   transition: transform calc(var(--duration) * 250ms);
+:root {
+  --duration: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration: 0;
+  }
+}
