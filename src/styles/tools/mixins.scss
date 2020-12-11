@@ -78,7 +78,7 @@
 /// Shorthand for all grid sizes.
 /// @param {String} $breakpoint - At what breakpoint is this mixin used?
 /// @param {Number} $grid-columns - how many cols does this grid have?
-@mixin grid-breakpoint($breakpoint, $grid-columns) {
+@mixin grid-at-breakpoint($breakpoint, $grid-columns) {
   @include respond-from($breakpoint) {
     @for $i from 1 through $grid-columns {
       .o-#{$i}-of-#{$grid-columns}\@#{$breakpoint} {
