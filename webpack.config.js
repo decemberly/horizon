@@ -38,6 +38,9 @@ module.exports = function (env, entry) {
           use: [
             {
               loader: MiniCssExtractPlugin.loader,
+              options: {
+                publicPath: '',
+              },
             },
             {
               loader: require.resolve('css-loader'),
@@ -53,6 +56,14 @@ module.exports = function (env, entry) {
             },
           ],
         },
+        {
+          test: /\.(png|jpe?g|gif|woff|eot|svg|ttf)$/i,
+          use: [
+            {
+              loader: 'file-loader',
+            },
+          ],
+        },
       ],
     },
 
@@ -60,20 +71,22 @@ module.exports = function (env, entry) {
       new MiniCssExtractPlugin({
         filename: '[name]/main.css',
       }),
-      // new CopyPlugin([
+      // new CopyPlugin({
+      //   patterns: [
+      //     // {
+      //     //     from: 'src/images',
+      //     //     to: 'dist/images',
+      //     // },
       //     {
-      //         from: 'src3/images',
-      //         to: 'dist/images',
+      //         from: 'src/fonts',
+      //         to: 'dist/fonts'
       //     },
-      //     {
-      //         from: 'src3/fonts',
-      //         to: 'dist/fonts',
-      //     },
-      // ]),
-      new ImageminPlugin({
-        test: /\.(jpe?g|png|gif|svg)$/i,
-        plugins: [imageminSvgo(), imageminMozjpeg(), imageminOptipng()],
-      }),
+      //   ],
+      // }),
+      // new ImageminPlugin({
+      //   test: /\.(jpe?g|png|gif|svg)$/i,
+      //   plugins: [imageminSvgo(), imageminMozjpeg(), imageminOptipng()],
+      // }),
     ],
   };
 };
